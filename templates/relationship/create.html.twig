@@ -1,0 +1,27 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+<div class="row gap-20">
+    <div class="masonry-item col-12">
+        <div class="bgc-white p-20 bd">
+            <h4 class="c-grey-900">{% trans %}Add relationship{% endtrans %}</h4>
+            {{ form_start(form, {'attr': {'id': 'form_relationship_add'}}) }}
+            <hr>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{ form_label(form.relationship) }} <span class="error">*</span>
+                    {{ form_widget(form.relationship) }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form_label(form.status) }} <span class="error">*</span>
+                    {{ form_widget(form.status) }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+</div>
+<div id="check_duplicate_relationship" data-path="{{path('check_duplicate_relationship')}}"></div>
+{% endblock %}
